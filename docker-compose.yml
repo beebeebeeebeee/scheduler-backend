@@ -1,0 +1,21 @@
+version: '3'
+services:
+  scheduler-backend:
+    image: scheduler-backend:1.0.0
+    build: .
+    restart: always
+    network_mode: 'bridge'
+    container_name: scheduler-backend
+    environment:
+      - 'TZ=Asia/Hong_Kong'
+    ports:
+      - '4000:4000'
+    volumes:
+      - './data:/app/data'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1k"
+        max-file: "3"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

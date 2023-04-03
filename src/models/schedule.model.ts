@@ -21,11 +21,13 @@ export class ScheduleModel {
     @IsDefined()
     private leaveTime: LeaveTimeEnum;
 
-    @IsDateString()
+    @IsString()
+    @IsNotEmpty()
     @IsDefined()
     private start: string;
 
-    @IsDateString()
+    @IsString()
+    @IsNotEmpty()
     @IsDefined()
     private end: string;
 
