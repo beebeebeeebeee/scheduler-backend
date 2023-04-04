@@ -2,7 +2,7 @@ import * as express from 'express'
 import * as http from 'http'
 import {Server} from 'socket.io'
 import * as bodyParser from 'body-parser'
-import {AuthRoutes, HolidayRoutes, SchedulerRoutes} from "./routes";
+import {AuthRoutes, HolidayRoutes, SchedulerRoutes, UserRoutes} from "./routes";
 import * as Cors from 'cors';
 import * as dotenv from 'dotenv';
 
@@ -18,6 +18,7 @@ app.use(bodyParser.json())
 app.use("/api/auth", AuthRoutes)
 app.use("/api/holiday", HolidayRoutes)
 app.use("/api/scheduler", SchedulerRoutes)
+app.use("/api/user", UserRoutes)
 
 const {PORT = 4000} = process.env;
 server.listen(PORT, () => {

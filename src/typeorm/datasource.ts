@@ -1,12 +1,13 @@
 import {DataSource, Repository} from "typeorm";
-import {ScheduleEntity} from "../entities";
+import {ScheduleEntity, UserEntity} from "../entities";
 
 const appDataSource = new DataSource({
     type: "sqlite",
     database: "data/database.db",
     synchronize: true,
     entities: [
-        ScheduleEntity
+        ScheduleEntity,
+        UserEntity,
     ]
 })
 
@@ -15,7 +16,11 @@ void appDataSource.initialize();
 const scheduleRepository: Repository<ScheduleEntity> =
     appDataSource.getRepository<ScheduleEntity>(ScheduleEntity);
 
+const userRepository: Repository<UserEntity> =
+    appDataSource.getRepository<UserEntity>(UserEntity);
+
 export {
     appDataSource,
     scheduleRepository,
+    userRepository,
 }
